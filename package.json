@@ -1,0 +1,28 @@
+{
+  "name": "cypress-frontend-testing",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": "true",
+  "workspaces": [
+    "react-demo",
+    "vanilla",
+    "svelte-demo"
+  ],
+  "scripts": {
+    "dev:vanilla": "lerna run start --scope vanilla",
+    "dev:react-demo": "lerna run dev --scope react-demo",
+    "dev:svelte-demo": "lerna run dev --scope svelte-demo",
+    "test:vanilla": "start-server-and-test dev:vanilla http://localhost:3000 cy:run",
+    "test:react-demo": "start-server-and-test dev:react-demo http-get://localhost:3000 cy:run",
+    "test:svelte-demo": "start-server-and-test dev:svelte-demo http-get://localhost:3000 cy:run",
+    "cy:run": "cypress run --headless"
+  },
+  "devDependencies": {
+    "cypress": "^9.1.0",
+    "lerna": "^4.0.0"
+  },
+  "dependencies": {
+    "start-server-and-test": "^1.14.0"
+  }
+}
